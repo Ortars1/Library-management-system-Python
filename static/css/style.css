@@ -1,0 +1,209 @@
+/* ── CSS custom properties & reset ────────────────────────────────────────── */
+:root {
+  --primary: #2563eb; --primary-hover: #1d4ed8;
+  --bg: #f8fafc; --surface: #ffffff;
+  --text: #0f172a; --muted: #64748b;
+  --success: #10b981; --warning: #f59e0b; --danger: #ef4444;
+  --border: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  --radius: 14px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg); color: var(--text);
+  line-height: 1.5; min-height: 100vh;
+}
+
+/* ── Header / Nav ──────────────────────────────────────────────────────────── */
+header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  position: sticky; top: 0; z-index: 10;
+}
+nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-weight: 700; font-size: 1.25rem; color: var(--primary); text-decoration: none; }
+.nav-links { display: flex; align-items: center; }
+.nav-links a {
+  margin-left: 1.5rem; text-decoration: none;
+  color: var(--muted); font-weight: 500; transition: color .2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--primary); }
+.user-badge {
+  background: #e0e7ff; color: var(--primary);
+  padding: 0.4rem 0.8rem; border-radius: 999px;
+  font-size: 0.85rem; font-weight: 600; margin-left: 1.5rem;
+}
+
+/* ── Main layout ───────────────────────────────────────────────────────────── */
+main { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+
+/* ── Buttons ───────────────────────────────────────────────────────────────── */
+.btn {
+  background: var(--primary); color: #fff;
+  padding: 0.8rem 1.5rem; border: none;
+  border-radius: var(--radius);
+  cursor: pointer; font-weight: 500;
+  transition: background .2s; font-size: 1rem;
+  display: inline-block; text-decoration: none;
+  line-height: 1.4;
+}
+.btn:hover { background: var(--primary-hover); }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-sm { padding: 0.45rem 0.9rem; font-size: 0.875rem; border-radius: 8px; }
+.btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
+.btn-outline:hover { background: var(--bg); }
+.btn-danger { background: var(--danger); }
+.btn-danger:hover { background: #dc2626; }
+
+/* ── Card ──────────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+/* ── Badges & tags ─────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-block; padding: 0.3rem 0.8rem;
+  border-radius: 999px; font-size: 0.8rem; font-weight: 600;
+}
+.b-green  { background: #dcfce7; color: #166534; }
+.b-yellow { background: #fef3c7; color: #92400e; }
+.b-red    { background: #fee2e2; color: #991b1b; }
+
+.tag {
+  background: #f1f5f9; padding: 0.2rem 0.6rem;
+  border-radius: 6px; font-size: 0.8rem; color: var(--muted);
+  margin-right: 0.4rem; display: inline-block; margin-bottom: 0.25rem;
+}
+
+/* ── Alerts ────────────────────────────────────────────────────────────────── */
+.alert { padding: 1rem 1.25rem; border-radius: var(--radius); margin-bottom: 1rem; font-size: 0.95rem; }
+.alert-error   { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+.alert-success { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+
+/* ── Home hero ─────────────────────────────────────────────────────────────── */
+.hero { text-align: center; padding: 5rem 1rem 4rem; }
+.hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+.hero p  { color: var(--muted); font-size: 1.1rem; margin-bottom: 2rem; }
+
+/* ── Search bar ────────────────────────────────────────────────────────────── */
+.search-bar { display: flex; gap: 0.75rem; margin-bottom: 2rem; }
+.search-bar input {
+  flex: 1; padding: 0.8rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  box-shadow: var(--shadow);
+  outline: none; transition: border-color .2s, box-shadow .2s;
+  background: var(--surface);
+}
+.search-bar input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+}
+
+/* ── Book grid ─────────────────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.book-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  transition: transform .2s, box-shadow .2s;
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.book-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+.book-card h3 { font-size: 1.05rem; line-height: 1.4; }
+.book-card h3 a { color: var(--text); text-decoration: none; }
+.book-card h3 a:hover { color: var(--primary); }
+.book-card .meta { color: var(--muted); font-size: 0.875rem; }
+.book-card .tags { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+
+/* ── Loans table ───────────────────────────────────────────────────────────── */
+.loans-table-wrap { overflow-x: auto; }
+table.loans-table { width: 100%; border-collapse: collapse; }
+table.loans-table th {
+  text-align: left; padding: 0.75rem 1rem;
+  color: var(--muted); font-weight: 500;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+}
+table.loans-table td {
+  padding: 1rem; border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+table.loans-table tr:last-child td { border-bottom: none; }
+
+.status-pill {
+  display: inline-block; padding: 0.3rem 0.8rem;
+  border-radius: 999px; font-size: 0.8rem; font-weight: 600;
+}
+.s-active   { background: #dcfce7; color: #166534; }
+.s-overdue  { background: #fee2e2; color: #991b1b; animation: pulse 2s infinite; }
+.s-returned { color: var(--muted); }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
+
+/* ── Login page ────────────────────────────────────────────────────────────── */
+.login-wrap {
+  display: flex; align-items: center; justify-content: center;
+  min-height: calc(100vh - 65px);
+  background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 100%);
+  padding: 2rem;
+}
+.login-card {
+  background: var(--surface);
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.12);
+  width: 100%; max-width: 420px;
+  text-align: center;
+}
+.login-card .logo-big { font-size: 2.5rem; margin-bottom: 0.5rem; }
+.login-card h1 { font-size: 1.5rem; margin-bottom: 0.4rem; }
+.login-card .sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; }
+.form-group { text-align: left; margin-bottom: 1rem; }
+.form-group label { display: block; margin-bottom: 0.4rem; font-weight: 500; font-size: 0.9rem; }
+.form-group input {
+  width: 100%; padding: 0.8rem 1rem;
+  border: 1px solid var(--border); border-radius: 10px;
+  font-size: 1rem; transition: border .2s; outline: none;
+  background: var(--surface);
+}
+.form-group input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+}
+.login-card .btn { width: 100%; margin-top: 0.5rem; border-radius: 10px; padding: 0.9rem; }
+.login-card .hint { margin-top: 1.5rem; font-size: 0.85rem; color: var(--muted); }
+.login-card .hint a { color: var(--primary); text-decoration: none; font-weight: 500; }
+
+/* ── Reports stats ─────────────────────────────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem; margin-bottom: 2rem;
+}
+.stat-card {
+  background: var(--surface); border-radius: var(--radius);
+  padding: 1.5rem; box-shadow: var(--shadow);
+  border: 1px solid var(--border); text-align: center;
+}
+.stat-card .stat-num { font-size: 2.5rem; font-weight: 700; color: var(--primary); }
+.stat-card .stat-label { color: var(--muted); font-size: 0.9rem; margin-top: 0.25rem; }
+
+/* ── Borrow button in book card ─────────────────────────────────────────────── */
+.btn-borrow { width: 100%; margin-top: 0.75rem; }
+.borrow-msg { display: block; margin-top: 0.4rem; min-height: 1rem; font-size: 0.8rem; }

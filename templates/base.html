@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}LibraryMVP{% endblock %}</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <header>
+    <nav>
+      <a class="logo" href="/" data-route="/">📚 LibraryMVP</a>
+      <div class="nav-links">
+        <a href="/catalog/" data-route="/catalog/" id="nav-catalog">Каталог</a>
+        <a href="/my-loans/" data-route="/my-loans/" id="nav-loans">Мои выдачи</a>
+        <a href="/reports/" data-route="/reports/" id="nav-reports" style="display:none">Отчёты</a>
+        <span id="user-badge-wrap"></span>
+        <a href="#" id="nav-logout" onclick="handleLogout(); return false;">Выйти</a>
+        <a href="/login/" data-route="/login/" id="nav-login">Войти</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="app">
+    <div id="app-loading">Загрузка...</div>
+  </main>
+
+  <script>
+    window.API_BASE = '/api/v1';
+    window.TOKEN = localStorage.getItem('access_token');
+  </script>
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/router.js"></script>
+  <script src="/static/js/app.js"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>
